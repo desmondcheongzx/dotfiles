@@ -1,0 +1,14 @@
+[user]
+	name = Desmond Cheong
+	email = desmondcheongzx@gmail.com
+[core]
+	editor = emacs
+[credential]
+	helper = store
+[alias]
+	unstage = reset HEAD
+	last = log -1 HEAD
+	summary = log -15 --oneline --decorate --graph --all
+
+[rerere]
+	enabled = true
