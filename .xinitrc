@@ -15,7 +15,7 @@ fi
 
 xrandr --dpi 96
 xrdb -merge ~/.Xresources
-feh --bg-fill ~/Pictures/Wallpapers/kimi-no-na-wa.png
+feh --bg-fill ~/wallpaper.png
 setxkbmap -option "caps:ctrl_modifier"
 xbacklight -set 70%
 
