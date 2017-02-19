@@ -1,7 +1,7 @@
-URxvt.font: xft:Ubuntu mono:size=13
+URxvt.font: xft:Ubuntu mono:size=14
 URxvt.scrollBar: false
 
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,clipboard-osc,clipboard
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
@@ -33,3 +33,6 @@ URxvt.matcher.button: 1
 
 *.color7:       #86b8b5
 *.color15:      #d3ebe9
+
+URxvt.keysym.M-w:   perl:clipboard:copy
+URxvt.keysym.C-y:   perl:clipboard:paste
