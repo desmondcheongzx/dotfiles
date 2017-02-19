@@ -13,10 +13,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
         unset f
 fi
 
-xrandr --dpi 96
+#xrandr --dpi 96
 xrdb -merge ~/.Xresources
 feh --bg-fill ~/wallpaper.png
 setxkbmap -option "caps:ctrl_modifier"
+xdotool mousemove 1440 900
 xbacklight -set 70%
 
 exec i3
