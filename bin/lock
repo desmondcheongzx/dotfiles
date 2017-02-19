@@ -6,7 +6,8 @@ set -o errexit -o noclobber -o nounset
 HUE=(-level 0%,100%,0.6)
 EFFECT=(-filter Gaussian -resize 20% -define filter:sigma=1.5 -resize 500.5%)
 # default system sans-serif font
-FONT="$(convert -list font|grep Ubuntu-Mono -m 1)"
+#FONT="$(convert -list font|grep Ubuntu-Mono -m 1)"
+FONT=""
 IMAGE="$(mktemp).png"
 SHOT=(scrot)
 DESKTOP=""
