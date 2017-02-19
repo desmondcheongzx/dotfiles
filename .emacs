@@ -38,8 +38,8 @@
                    (indent-region (region-beginning) (region-end) nil))))))
 
 (load-theme 'ample t t)
-(load-theme 'ample-flat t t)
-(load-theme 'ample-light t t)
+;(load-theme 'ample-flat t t)
+;(load-theme 'ample-light t t)
 (enable-theme 'ample)
 
 ;;paredit
