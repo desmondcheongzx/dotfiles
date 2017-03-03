@@ -336,7 +336,7 @@ mode "no_gaps" {
 	# Pulse Audio controls
   	bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+ #increase sound volume
 	bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%- #decrease sound volume
-	bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle # mute sound
+	bindsym XF86AudioMicMute exec amixer -D pulse set Master 1+ toggle # mute sound
 
 	# Sreen brightness controls
 	bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -355,8 +355,12 @@ bindsym Mod1+Alt_R mode "passthrough"
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle # mute sound
+bindsym XF86AudioMicMute exec amixer -D pulse set Master 1+ toggle # mute sound
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
