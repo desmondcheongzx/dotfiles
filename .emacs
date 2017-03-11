@@ -77,8 +77,8 @@
 ;;magit settings
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;eshell shortcut
-(global-set-key [f1] 'eshell)
+;;shell shortcut
+(global-set-key [f1] 'shell)
 
 ;;control h to backspace
 (global-set-key (kbd "C-?") 'help-command)
@@ -98,3 +98,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "gray13" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "Source Code Pro Medium")))))
+
+;;always start a shell in emacs
+(shell)
