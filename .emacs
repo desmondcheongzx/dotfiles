@@ -61,6 +61,9 @@
 
 ;;;C settings;;;
 ;;set default indentation to 4 spaces
+(setq c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (other . "k&r")))
 (setq-default c-basic-offset 4)
 
 ;;change default browser for 'browse-url'  to w3m
