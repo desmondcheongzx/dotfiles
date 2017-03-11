@@ -8,7 +8,7 @@
 ;get rid of all distractions. No fear baby
 (setq inhibit-startup-message t)
 ;emacs bugs up if you fullscreen immediately
-;(run-with-idle-timer 0.1 nil 'toggle-frame-fullscreen)
+(run-with-idle-timer 0.1 nil 'toggle-frame-fullscreen)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
