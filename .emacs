@@ -65,6 +65,21 @@
                         (awk-mode . "awk")
                         (other . "k&r")))
 (setq-default c-basic-offset 4)
+;; Run C programs directly from within emacs
+(defun execute-c-program ()
+  (interactive)
+  (save-buffer)
+  (delete-other-windows)
+  (split-window-right)
+  (other-window 1)
+  (let* ((sans-extension (file-name-sans-extension buffer-file-name))
+         (foo (concat "gcc -o " sans-extension " " buffer-file-name " && " sans-extension)))
+    (async-shell-command foo)))
+
+(defun my-c-initialization-hook ()
+  (local-set-key (kbd "C-c C-c") 'execute-c-program))
+;;c-initialization-hook evaluated when c major mode first starts
+(add-hook 'c-initialization-hook 'my-c-initialization-hook)
 
 ;;change default browser for 'browse-url'  to w3m
 (setq browse-url-browser-function 'w3m-goto-url-new-session)
@@ -113,4 +128,7 @@
 ;;always start a shell in emacs
 ;;but in the same window
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
+;;same goes for shell commands
+(push (cons "\\*Async Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
+(push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 (shell)
