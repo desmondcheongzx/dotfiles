@@ -99,6 +99,9 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "gray13" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "Source Code Pro Medium")))))
 
+;;start flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;;always start a shell in emacs
 ;;but in the same window
 (push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
