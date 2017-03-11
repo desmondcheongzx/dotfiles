@@ -43,6 +43,7 @@
 ;(load-theme 'ample-light t t)
 (enable-theme 'ample)
 
+;;;LISP settings;;;
 ;;paredit
 
 (load (expand-file-name  "~/quicklisp/slime-helper.el"))
@@ -57,6 +58,10 @@
 (setq geiser-active-implementations '(racket))
 (setq geiser-repl-use-other-window nil)
 (setq geiser-mode-start-repl-p t)
+
+;;;C settings;;;
+;;set default indentation to 4 spaces
+(setq-default c-basic-offset 4)
 
 ;;change default browser for 'browse-url'  to w3m
 (setq browse-url-browser-function 'w3m-goto-url-new-session)
