@@ -105,6 +105,9 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
+;;only use lower case characters
+(setq ace-jump-mode-move-keys
+      (loop for i from ?a to ?z collect i))
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c C-f") 'ace-jump-mode)
 
