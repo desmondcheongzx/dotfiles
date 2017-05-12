@@ -100,7 +100,6 @@
 ;;
 ;; ace jump mode major function
 ;; 
-(add-to-list 'load-path "~/.emacs.d/")
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -131,7 +130,7 @@
 (global-set-key [f1] 'shell)
 
 ;;control h to backspace
-(global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "C-? k") 'describe-key)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
@@ -143,7 +142,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages (quote (avy w3m slime flycheck ample-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
