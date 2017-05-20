@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR=~/Pictures/screenshots
+[ ! -d $DIR ] && mkdir $DIR
+
+cd $DIR
+
+name="$(date +%d-%b-%Y_%T).png"
+
+scrot -d 1 $name
+
+
+
