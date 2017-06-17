@@ -60,6 +60,10 @@
 (setq geiser-repl-use-other-window nil)
 (setq geiser-mode-start-repl-p t)
 
+;;;Python settings;;;
+(add-hook 'python-mode-hook '(lambda ()
+                               (setq python-indent 2)))
+
 ;;;C settings;;;
 ;;set default indentation to 4 spaces
 (setq c-default-style '((java-mode . "java")
@@ -97,6 +101,12 @@
    (concat "http://" site)))
 
 (setq w3m-default-display-inline-images t)
+
+;;
+;; tramp settings
+;;
+(setq tramp-default-method "ssh")
+
 
 ;;
 ;; ace jump mode major function
