@@ -78,7 +78,7 @@
   (split-window-right)
   (other-window 1)
   (let* ((sans-extension (file-name-sans-extension buffer-file-name))
-         (foo (concat "gcc -std=c11 -o " sans-extension " " buffer-file-name " && " sans-extension)))
+         (foo (concat "gcc -std=c11 -Wall -o " sans-extension " " buffer-file-name " && " sans-extension)))
     (async-shell-command foo)))
 
 (defun my-c-initialization-hook ()
