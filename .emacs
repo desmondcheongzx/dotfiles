@@ -15,6 +15,14 @@
 
 (setq default-directory "~/")
 
+;consolidate all auto-save files and backups
+(custom-set-variables
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+
+;if necessary, create the directory for autosaving
+(make-directory "~/.emacs.d/autosaves/" t)
+
 (setq frame-title-format "emacs ~ %b")
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-linum-mode 1)
