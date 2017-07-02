@@ -1,0 +1,13 @@
+#Given a list of arguments, ask [y/n] and print arguments that were selected
+#Usage: pick [arguments]
+
+for i; do
+	echo -n "$i? " >/dev/tty
+	read input
+	
+	case $input in
+	y) echo $i;;
+	n|"") ;;
+	q) break;;
+	esac
+done </dev/tty #TODO: figure out if this last /dev/tty is really needed. I'm guessing no

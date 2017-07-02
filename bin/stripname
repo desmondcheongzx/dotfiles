@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in *; do
+    mv "$i" $(echo $i | sed 's/^[[:alnum:]]* //
+                             s/[[:blank:]]-[[:blank:]]/-/g
+                             s/[[:blank:]]/-/g')
+done
