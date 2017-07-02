@@ -1,0 +1,4 @@
+#!/bin/bash
+mpc clear
+mpc search filename "bad to the bone" | mpc add
+mpc play

@@ -1,0 +1,4 @@
+#!/bin/bash
+mpc clear
+mpc load "$1"
+mpc play

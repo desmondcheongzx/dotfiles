@@ -1,0 +1,4 @@
+#!/bin/bash
+mpc clear
+mpc search filename "holy" | mpc add
+mpc play
