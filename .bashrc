@@ -10,7 +10,7 @@ fi
 
 # User specific aliases and functions
 
-export EDITOR=emacs
+export EDITOR='emacs -nw'
 
 #dotfiles alias
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
