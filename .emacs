@@ -5,6 +5,12 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+(defun is-gui()
+  (display-graphic-p))
+
+(defmacro when-gui(&rest body)
+  `(when (is-gui) ,@body))
+
 ;get rid of all distractions. No fear baby
 (setq inhibit-startup-message t)
 ;emacs bugs up if you fullscreen immediately
@@ -47,20 +53,22 @@
                  (let ((mark-even-if-inactive transient-mark-mode))
                    (indent-region (region-beginning) (region-end) nil))))))
 
-(load-theme 'ample t t)
+(when-gui
+ (load-theme 'ample t t)
+ (enable-theme 'ample))
 ;(load-theme 'ample-flat t t)
 ;(load-theme 'ample-light t t)
-(enable-theme 'ample)
 
 ;;;LISP settings;;;
 ;;paredit
 
 (load (expand-file-name  "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
-(setq slime-protocol-version 'ignore)
-(require 'slime)
-(add-hook 'slime-repl-mode-hook #'delete-other-windows)
+(when-gui
+ (setq inferior-lisp-program "/usr/bin/sbcl")
+ (setq slime-contribs '(slime-fancy))
+ (setq slime-protocol-version 'ignore)
+ (require 'slime)
+ (add-hook 'slime-repl-mode-hook #'delete-other-windows))
 ;(slime)
 
 ;;geiser for scheme
@@ -165,12 +173,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (ace-jump-mode avy w3m slime flycheck ample-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "gray13" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "Source Code Pro Medium")))))
+(when-gui
+ (custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  '(default ((t (:inherit nil :stipple nil :background "gray13" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "Source Code Pro Medium"))))))
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -181,4 +190,5 @@
 ;;same goes for shell commands
 (push (cons "\\*Async Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
-(shell)
+(when-gui
+ (shell))
