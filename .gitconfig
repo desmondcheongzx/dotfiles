@@ -2,7 +2,7 @@
 	name = Desmond Cheong
 	email = desmondcheongzx@gmail.com
 [core]
-	editor = vim
+	editor = emacs -nw
 [credential]
 	helper = store
 [alias]
