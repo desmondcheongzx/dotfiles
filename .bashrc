@@ -16,3 +16,5 @@ export EDITOR='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #pip3 alias
 alias pip3='/usr/bin/python3 -m pip'
+#terminal emacs alias
+alias em='/usr/bin/emacs -nw'
