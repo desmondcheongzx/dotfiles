@@ -1,10 +1,9 @@
 [user]
-	name = Desmond Cheong
+	name = Desmond Cheong Zhi Xi
 	email = desmondcheongzx@gmail.com
+	signingkey = desmondcheongzx@gmail.com
 [core]
 	editor = emacs -nw
-[credential]
-	helper = store
 [alias]
 	unstage = reset HEAD
 	last = log -1 HEAD
@@ -12,3 +11,7 @@
 
 [rerere]
 	enabled = true
+[gpg]
+	program = /usr/local/bin/gpg2
+[commit]
+	gpgsign = true
