@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 DIR=~/Pictures/screenshots
 [ ! -d $DIR ] && mkdir $DIR
 

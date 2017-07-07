@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
-exec urxvt -e ranger
+W3MIMGDISPLAY_PATH="/usr/local/libexec/w3m/w3mimgdisplay"
+export W3MIMGDISPLAY_PATH
+
+exec xterm -e ranger
 
