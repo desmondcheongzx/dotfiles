@@ -1,0 +1,41 @@
+! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
+XTerm*loginShell:true
+
+*.foreground:   #86b8b5
+*.background:   #02060a
+*.cursorColor:  #86b8b5
+
+*.color0:       #0a0f14
+*.color8:       #10151b
+
+*.color1:       #c33027
+*.color9:       #bf5f34
+
+*.color2:       #26a98b
+*.color10:      #17557a
+
+*.color3:       #edb54b
+*.color11:      #245361
+
+*.color4:       #1d6275
+!directory colors
+*.color12:      #11698a
+
+*.color5:       #4e5165
+*.color13:      #888ba5
+
+*.color6:       #33859d
+*.color14:      #599caa
+
+*.color7:       #86b8b5
+*.color15:      #d3ebe9
+
+XTerm*renderFont: true
+XTerm*faceName: Fira Mono
+XTerm*faceSize: 12
+
+XTerm.vt100.scrollBar: false
+XTerm.vt100.translations: #override \n\
+	<Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+	Alt <Key>W: copy-selection(CLIPBOARD) \n\
+	Ctrl <Key>Y: insert-selection(CLIPBOARD)
