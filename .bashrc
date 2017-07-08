@@ -1,20 +1,5 @@
-# .bashrc
+PS1="[`whoami`@\h \W]$ "; export PS1
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
 fi
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-
-export EDITOR='emacs -nw'
-
-#dotfiles alias
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-#pip3 alias
-alias pip3='/usr/bin/python3 -m pip'
-#terminal emacs alias
-alias em='/usr/bin/emacs -nw'
