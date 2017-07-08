@@ -88,9 +88,14 @@ key.setGlobalKey(['C-x', 'o'], function (ev, arg) {
                 command.focusOtherFrame(arg);
             }, 'Select next frame');
 
-key.setGlobalKey(['C-x', 'C-f'], function (ev) {
-                BrowserOpenFileWindow();
-            }, 'Open the local file', true);
+key.setGlobalKey(['C-x', 'C-f'], function (aEvent, aArg) {
+    ext.exec("hok-start-foreground-mode", aArg);
+}, 'Hok - Foreground hint  mode', true);
+
+key.setGlobalKey(['C-x', 'C-b'], function (aEvent, aArg) {
+    ext.exec("hok-start-background-mode", aArg);
+}, 'Hok - Background hint  mode', true);
+
 
 key.setGlobalKey(['C-x', 'C-s'], function (ev) {
                 saveDocument(window.content.document);
