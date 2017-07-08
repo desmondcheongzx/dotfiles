@@ -1,4 +1,5 @@
 (require 'package)
+(require 'cl)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -11,6 +12,12 @@
 (defmacro when-gui(&rest body)
   `(when (is-gui) ,@body))
 
+(defun is-term()
+  (not (display-graphic-p)))
+
+(defmacro when-term(&rest body)
+  `(when (is-term),@body))
+
 ;get rid of all distractions. No fear baby
 (setq inhibit-startup-message t)
 ;emacs bugs up if you fullscreen immediately
@@ -20,6 +27,9 @@
 (tool-bar-mode -1)
 
 (setq default-directory "~/")
+
+(add-to-list 'default-frame-alist
+             '(font . "Fira Mono"))
 
 ;consolidate all auto-save files and backups
 (custom-set-variables
@@ -32,6 +42,9 @@
 (setq frame-title-format "emacs ~ %b")
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-linum-mode 1)
+;give spacing between line number and text in terminal
+(when-term
+ (setq linum-format "%d "))
 (require 'ido)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
@@ -62,9 +75,9 @@
 ;;;LISP settings;;;
 ;;paredit
 
-(load (expand-file-name  "~/quicklisp/slime-helper.el"))
 (when-gui
- (setq inferior-lisp-program "/usr/bin/sbcl")
+ (load (expand-file-name  "~/quicklisp/slime-helper.el"))
+ (setq inferior-lisp-program "/usr/local/bin/sbcl")
  (setq slime-contribs '(slime-fancy))
  (setq slime-protocol-version 'ignore)
  (require 'slime)
@@ -137,7 +150,7 @@
       (loop for i from ?a to ?z collect i))
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c C-f") 'ace-jump-mode)
-
+(define-key global-map (kbd "C-c C-l") 'ace-jump-line-mode)
 
 
 ;; 
@@ -150,7 +163,7 @@
   t)
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(define-key global-map (kbd "C-c C-b") 'ace-jump-mode-pop-mark)
 
 
 ;;magit settings
@@ -173,13 +186,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages (quote (ace-jump-mode avy w3m slime flycheck ample-theme))))
-(when-gui
- (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(default ((t (:inherit nil :stipple nil :background "gray13" :foreground "#bdbdb3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "Source Code Pro Medium"))))))
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
