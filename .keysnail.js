@@ -65,7 +65,8 @@ key.setGlobalKey(['C-x', 'l'], function (ev) {
             }, 'Focus to the location bar', true);
 
 key.setGlobalKey(['C-x', 'g'], function (ev) {
-                command.focusToById("searchbar");
+    //command.focusToById("searchbar");
+    command.focusElement(command.elementsRetrieverTextarea, 0);
             }, 'Focus to the search bar', true);
 
 key.setGlobalKey(['C-x', 't'], function (ev) {
@@ -79,7 +80,9 @@ key.setGlobalKey(['C-x', 's'], function (ev) {
 key.setGlobalKey(['C-x', 'k'], function (ev) {
                 BrowserCloseTabOrWindow();
             }, 'Close tab / window');
-
+key.setGlobalKey(['C-x', 'C-k'], function (en) {
+    BrowserCloseTabOrWindow();
+}, 'Close tab / window');
 key.setGlobalKey(['C-x', 'K'], function (ev) {
                 closeWindow(true);
             }, 'Close the window');
