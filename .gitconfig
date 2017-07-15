@@ -11,7 +11,5 @@
 
 [rerere]
 	enabled = true
-[gpg]
-	program = /usr/local/bin/gpg2
 [commit]
 	gpgsign = true
