@@ -39,3 +39,24 @@ XTerm.vt100.translations: #override \n\
 	<Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
 	Alt <Key>W: copy-selection(CLIPBOARD) \n\
 	Ctrl <Key>Y: insert-selection(CLIPBOARD)
+
+URxvt.perl-ext-common: default,matcher
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! scroll pager instead of terminal buffer
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+URxvt.font: xft:Fira Mono:size=12
+URxvt.scrollBar: false
+! open links with left click
+Urxvt.url-launcher: /bin/xdg-open
+Urxvt.matcher.button: 1
