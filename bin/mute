@@ -1,2 +1,0 @@
-#!/usr/local/bin/bash
-mixerctl outputs.master.mute=toggle
