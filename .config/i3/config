@@ -259,9 +259,9 @@ mode "passthrough" {
 #bindsym Mod1+Alt_R mode "passthrough"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec "mixerctl outputs.master=+15,+15"
-bindsym XF86AudioLowerVolume exec "mixerctl outputs.master=-15,-15"
-#bindsym XF86AudioMicMute exec mixerctl outputs.master.mute=toggle # mute sound
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
+bindsym XF86AudioMicMute exec amixer -D pulse set Master toggle
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
