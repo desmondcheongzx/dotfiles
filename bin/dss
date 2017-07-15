@@ -1,6 +1,6 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 DIR=~/Pictures/screenshots
-[ ! -d $DIR ] && mkdir $DIR
+[ ! -d $DIR ] && mkdir -p $DIR
 
 cd $DIR
 
