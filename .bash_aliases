@@ -1,5 +1,8 @@
-#dotfiles alias
-alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#dotfiles for updating configuration files on git
+alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-#em alias
-alias em='/usr/local/bin/emacs -nw'
+#em for using emacs in a terminal
+alias em='/bin/emacs -nw'
+
+#turn on colouring for ls
+alias ls='ls --color=auto'
