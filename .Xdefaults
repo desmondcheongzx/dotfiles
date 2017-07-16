@@ -1,5 +1,5 @@
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
-XTerm*loginShell:true
+! XTerm*loginShell:true
 
 *.foreground:   #86b8b5
 *.background:   #02060a
@@ -60,3 +60,4 @@ URxvt.scrollBar: false
 ! open links with left click
 Urxvt.url-launcher: /bin/xdg-open
 Urxvt.matcher.button: 1
+
