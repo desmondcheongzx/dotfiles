@@ -10,3 +10,5 @@ PAGER=less
 XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH HOME TERM EDITOR PAGER XDG_CONFIG_HOME
+
+eval $(keychain --eval --quiet id_rsa --timeout 60)
