@@ -1,7 +1,5 @@
 #!/bin/bash
 
-W3MIMGDISPLAY_PATH="/usr/lib/w3m/w3mimgdisplay"
-export W3MIMGDISPLAY_PATH
+exec urxvt -e /bin/ranger
 
-exec xterm -e /bin/ranger
 
