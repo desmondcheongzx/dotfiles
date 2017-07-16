@@ -5,7 +5,7 @@ feh --bg-fill ~/wallpaper.png
 setxkbmap -option "caps:ctrl_modifier"
 xdotool mousemove 1440 900
 #udiskie -2 &
-mpd
+#mpd
 #xbacklight -set 70%
 
 exec i3
