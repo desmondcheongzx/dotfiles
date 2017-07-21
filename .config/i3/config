@@ -123,6 +123,7 @@ set $workspace9 "9: anime"
 assign [class="smplayer"] $workspace9
 
 set $workspace10 "10: misc"
+assign [class="Anki"] $workspace10
 
 # switch to workspace + leniency
 bindsym $mod+1 workspace $workspace1
