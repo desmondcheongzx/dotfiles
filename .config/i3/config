@@ -124,6 +124,8 @@ assign [class="smplayer"] $workspace9
 
 set $workspace10 "10: misc"
 assign [class="Anki"] $workspace10
+assign [class="Thunderbird"] $workspace10
+assign [class="Deluge"] $workspace10
 
 # switch to workspace + leniency
 bindsym $mod+1 workspace $workspace1
