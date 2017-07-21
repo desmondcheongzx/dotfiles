@@ -14,3 +14,4 @@ export PATH HOME TERM EDITOR PAGER XDG_CONFIG_HOME
 eval $(keychain --eval --quiet id_rsa)
 udiskie -2 &
 mpd
+music
