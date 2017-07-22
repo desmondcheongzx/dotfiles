@@ -77,12 +77,12 @@
 
 (when-gui
  (load (expand-file-name  "~/quicklisp/slime-helper.el"))
- (setq inferior-lisp-program "/usr/local/bin/sbcl")
+ (setq inferior-lisp-program "/bin/sbcl")
  (setq slime-contribs '(slime-fancy))
  (setq slime-protocol-version 'ignore)
- (require 'slime)
+ ;(require 'slime)
  (add-hook 'slime-repl-mode-hook #'delete-other-windows))
-;(slime)
+; (slime))
 
 ;;geiser for scheme
 (setq geiser-active-implementations '(racket))
@@ -134,8 +134,39 @@
 ;;
 ;; tramp settings
 ;;
+(require 'tramp)
 (setq tramp-default-method "ssh")
 
+;; Many thanks go to Andy Sloane at https://www.a1k0n.net for the following tramp settings (with my own edits, of course)
+(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
+(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
+
+(setq lisp-indent-function 'common-lisp-indent-function
+      slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+
+(defvar *my-box-tramp-path*
+  "/ssh:desmond@desmondcheong.com:")
+
+(defvar *current-tramp-path* nil)
+(defun connect-to-host (path)
+  (setq *current-tramp-path* path)
+  (setq slime-translate-from-lisp-filename-function
+        (lambda (f)
+          (concat *current-tramp-path* f)))
+  (setq slime-translate-to-lisp-filename-function
+        (lambda (f)
+          (substring f (length *current-tramp-path*))))
+  ;establish shh tunnel with server to connect slime
+  (shell-command "ssh -f -N slime-tunnel")
+  (slime-connect "localhost" 4005))
+
+(defun my-slime ()
+  (interactive)
+  (connect-to-host *my-box-tramp-path*))
+
+(defun my-box ()
+  (interactive)
+  (find-file *my-box-tramp-path*))
 
 ;;
 ;; ace jump mode major function
