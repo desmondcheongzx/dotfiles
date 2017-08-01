@@ -1,7 +1,7 @@
 (require 'package)
 (require 'cl)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+       '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
@@ -33,8 +33,15 @@
 
 ;consolidate all auto-save files and backups
 (custom-set-variables
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(package-selected-packages
+   (quote
+    (smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
 
 ;if necessary, create the directory for autosaving
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -73,14 +80,31 @@
 ;(load-theme 'ample-light t t)
 
 ;;;LISP settings;;;
-;;paredit
+;;parinfer
+(use-package parinfer
+    :ensure t
+    :bind
+    (("C-," . parinfer-toggle-mode))
+    :init
+    (progn
+      (setq parinfer-extensions
+            '(defaults       ; should be included.
+              pretty-parens  ; different paren styles for different modes.
+              paredit        ; Introduce some paredit commands.
+              smart-tab))      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+;      (setq parinfer-auto-switch-indent-mode t) ;; automatically switch to indent-mode
+;     (setq parinfer-auto-switch-indent-mode-when-closing t) ;; likewise as above
+      (add-hook 'clojure-mode-hook #'parinfer-mode)
+      (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+      (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+      (add-hook 'scheme-mode-hook #'parinfer-mode)
+      (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
 (when-gui
  (load (expand-file-name  "~/quicklisp/slime-helper.el"))
  (setq inferior-lisp-program "/bin/sbcl")
  (setq slime-contribs '(slime-fancy))
  (setq slime-protocol-version 'ignore)
- ;(require 'slime)
  (add-hook 'slime-repl-mode-hook #'delete-other-windows))
 ; (slime))
 
@@ -125,7 +149,7 @@
 (defun w3m-open-site (site)
   "Opens site in new w3m session with 'http://' appended"
   (interactive
-   (list (read-string "Enter website address(default: w3m-home):" nil nil w3m-home-page nil )))
+   (list (read-string "Enter website address(default: w3m-home):" nil nil w3m-home-page nil)))
   (w3m-goto-url-new-session
    (concat "http://" site)))
 
@@ -196,7 +220,6 @@
   '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-c C-b") 'ace-jump-mode-pop-mark)
 
-
 ;;magit settings
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -211,12 +234,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-.") 'other-window)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (ace-jump-mode avy w3m slime flycheck ample-theme))))
+
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -229,3 +247,14 @@
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 (when-gui
  (shell))
+(custom-set-faces)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
