@@ -233,8 +233,7 @@
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-.") 'other-window)
-
-
+(global-set-key (kbd "C-m") 'back-to-indentation) ;;Move point to the first non-whitespace character on this line
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
