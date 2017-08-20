@@ -4,7 +4,7 @@ DIR=~/Pictures/screenshots
 
 cd $DIR
 
-name="$(date +%d-%b-%Y_%T).png"
+name="$(date +%F_%T).png"
 
 scrot -d 1 $name
 
