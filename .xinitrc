@@ -9,4 +9,10 @@ redshift -l 1.3667:103.8 &
 #mpd
 #xbacklight -set 70%
 
+#for chinese pinyin input
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
+
 exec i3
