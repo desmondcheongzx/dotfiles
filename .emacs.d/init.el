@@ -286,8 +286,8 @@
 ;;same goes for shell commands
 (push (cons "\\*Async Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
-(when-gui
- (shell))
+;(when-gui
+; (shell))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
