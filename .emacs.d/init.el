@@ -41,7 +41,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(package-selected-packages
    (quote
-    (smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
+    (auctex js2-mode fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
 
 ;if necessary, create the directory for autosaving
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -115,7 +115,7 @@
 
 ;;;Python settings;;;
 (add-hook 'python-mode-hook '(lambda ()
-                               (setq python-indent 2)))
+                              (setq python-indent 4)))
 
 ;;;C settings;;;
 ;;set default indentation to 4 spaces
@@ -151,6 +151,10 @@
 (defun my-cpp-initialization-hook ()
   (local-set-key (kbd "C-c C-c") 'execute-cpp-program))
 (add-hook 'c++-mode-hook 'my-cpp-initialization-hook)
+
+; j2s-mode for javascript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;(add-hook 'web-mode-hook 'js2-minor-mode)
 
 ;;change default browser for 'browse-url'  to w3m
 (setq browse-url-browser-function 'w3m-goto-url-new-session)
@@ -236,6 +240,31 @@
 ;;magit settings
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;;auto-complete
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+
+;;web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(defun my-web-mode-hook ()
+  "Hook for web-mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(add-hook 'web-mode-hook 'my-web-mode-hook)
+
 ;;shell shortcut
 (global-set-key [f1] 'shell)
 
@@ -259,7 +288,27 @@
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 (when-gui
  (shell))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
