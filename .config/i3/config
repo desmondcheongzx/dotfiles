@@ -113,6 +113,7 @@ set $workspace3 "3: terminals"
 
 set $workspace4 "4: files"
 assign [title="ranger"] $workspace4
+assign [title="nautilus"] $workspace4
 
 set $workspace5 "5: 5"
 set $workspace6 "6: 6"
