@@ -41,7 +41,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(package-selected-packages
    (quote
-    (auctex js2-mode fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
+    (boogie-friends iy-go-to-char auctex js2-mode fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
 
 ;if necessary, create the directory for autosaving
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -265,8 +265,24 @@
 
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
+;; iy-go-to-char, immediately jump to next occurence of char
+(require 'iy-go-to-char)
+(global-set-key (kbd "M-m") 'iy-go-to-char)
+
 ;;shell shortcut
 (global-set-key [f1] 'shell)
+
+;;transpose shortcuts
+(defun push-line-up ()
+  "Move the current line up, reverse transpose."
+  (interactive)
+  (forward-line -1)
+  (transpose-lines 1))
+(forward-line -1)
+(indent-according-to-mode)
+
+(global-set-key (kbd "M-p") 'push-line-up)
+(global-set-key (kbd "M-n") 'transpose-lines)
 
 ;;control h to backspace
 (global-set-key (kbd "C-? k") 'describe-key)
@@ -275,10 +291,14 @@
 (global-set-key (kbd "C-x C-k") 'kill-region)
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-.") 'other-window)
-(global-set-key (kbd "C-j") 'back-to-indentation)
+;(global-set-key (kbd "C-i") 'back-to-indentation)
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-dafny-executable "BASE-DIRECTORY/dafny/Binaries/dafny")
+
+                                        ;set the default dictionary
+;;(setq ispell-dictionary "british")
 
 ;;always start a shell in emacs
 ;;but in the same window
@@ -288,12 +308,17 @@
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 ;(when-gui
 ; (shell))
-(custom-set-faces
+(custom-set-faces)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ 
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ 
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

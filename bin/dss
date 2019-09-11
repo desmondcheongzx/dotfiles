@@ -4,9 +4,9 @@ DIR=~/Pictures/screenshots
 
 cd $DIR
 
-name="$(date +%F_%T).png"
+name="$(date +%F_%H-%M-%S).png"
 
-scrot -d 1 $name
+scrot -d 1 -q 100 -s $name
 
 
 

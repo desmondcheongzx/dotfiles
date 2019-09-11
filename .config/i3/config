@@ -231,7 +231,7 @@ set $focused-border-color #50596B
 bar {
         
         status_command i3status
-        tray_output none
+        tray_output primary
 	strip_workspace_numbers yes
 	colors {
 		background $bg-color
@@ -250,6 +250,7 @@ bindsym $mod+minus scratchpad show
 for_window [class="^.*"] border pixel 0
 
 exec --no-startup-id compton --config ~/.config/compton.conf
+exec --no-startup-id nm-applet
 
 set_from_resource $darkred      color1  #000000
 set_from_resource $darkwhite    color7  #000000
