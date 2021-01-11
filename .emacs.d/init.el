@@ -486,6 +486,14 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
          "* %?\nEntered on %U\n  %i")))
 
 
+
+;;AucTex
+(setq TeX-PDF-mode t)
+(add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
