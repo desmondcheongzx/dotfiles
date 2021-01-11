@@ -84,6 +84,13 @@
 ;(load-theme 'ample-flat t t)
 ;(load-theme 'ample-light t t)
 
+
+;;;80 Column indicator;;;
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+
+(add-hook 'prog-mode-hook #'whitespace-mode)
+
 ;;;LISP settings;;;
 ;;parinfer
 (use-package parinfer
