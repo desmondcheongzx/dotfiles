@@ -39,6 +39,8 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(git-commit-style-convention-checks (quote (non-empty-second-line overlong-summary-line)))
+ '(git-commit-summary-max-length 50)
  '(package-selected-packages
    (quote
     (boogie-friends iy-go-to-char auctex js2-mode fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode avy w3m slime flycheck ample-theme))))
@@ -327,6 +329,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 
 ;;magit settings
 (global-set-key (kbd "C-x g") 'magit-status)
+;;(add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+
 
 ;;auto-complete
 (require 'auto-complete)
