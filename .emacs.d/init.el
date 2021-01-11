@@ -55,7 +55,7 @@
 (require 'ido)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+;(setq ido-everywhere t)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (setq next-line-add-newlines t)
 (setq-default indent-tabs-mode nil)
@@ -297,6 +297,11 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-dafny-executable "BASE-DIRECTORY/dafny/Binaries/dafny")
 
+;; helm
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(helm-mode 1)
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
