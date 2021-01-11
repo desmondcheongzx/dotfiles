@@ -21,7 +21,8 @@
 ;get rid of all distractions. No fear baby
 (setq inhibit-startup-message t)
 ;emacs bugs up if you fullscreen immediately
-(run-with-idle-timer 0.1 nil 'toggle-frame-fullscreen)
+
+(run-with-idle-timer 0.1 nil 'toggle-frame-maximized)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -29,7 +30,8 @@
 (setq default-directory "~/")
 
 (add-to-list 'default-frame-alist
-             '(font . "Fira Mono"))
+             '(font . "Fira Mono-11"))
+;; consider font size 12 for ubuntu
 
 ;consolidate all auto-save files and backups
 (custom-set-variables
@@ -365,6 +367,9 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 ;;shell shortcut
 (global-set-key [f1] 'shell)
 
+;; disable bell
+(setq ring-bell-function 'ignore)
+
 ;;transpose shortcuts
 (defun push-line-up ()
   "Move the current line up, reverse transpose."
@@ -465,24 +470,3 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
