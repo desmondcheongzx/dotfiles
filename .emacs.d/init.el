@@ -342,6 +342,41 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 ;;(add-hook 'after-save-hook 'magit-after-save-refresh-status t)
 
 
+;; matlab-mode
+(add-to-list 'load-path "~/.emacs.d/matlab-emacs-src/")
+(require 'matlab-load)
+
+;; use matlab-mode when you load .m files
+(autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
+(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
+(autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
+
+(defun run-matlab-code ()
+  "Execute matlab file."
+  (interactive)
+  (if (get-buffer "*MATLAB*")
+      (matlab-shell-run-cell)
+      (progn
+        (matlab-mode)
+        (matlab-shell)
+        (split-window-right)
+        (switch-to-buffer nil))))
+
+(add-hook 'matlab-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-h") 'delete-backward-char)
+            (local-set-key (kbd "C-c C-c") 'run-matlab-code)))
+
+;; use F10 to submit selected txt
+;;(define-key matlab-mode-map (kbd "C-c C-c") `matlab-shell-run-cell)
+;;(define-key matlab-mode-map (kbd "C-h") nil)
+
+;;(defun my-matlab-initialization-hook ()
+;;  (local-set-key (kbd "C-c C-c") 'execute-c-program))
+;;c-initialization-hook evaluated when c major mode first starts
+;;(add-hook 'matlab-mode-hook 'my-matlab-initialization-hook)
+
+
 ;;auto-complete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
