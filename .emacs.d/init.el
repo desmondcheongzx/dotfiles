@@ -74,8 +74,8 @@
                    (indent-region (region-beginning) (region-end) nil))))))
 
 (when-gui
- (load-theme 'ample t t)
- (enable-theme 'ample))
+ (load-theme 'gruvbox-dark-soft t)
+ (enable-theme 'gruvbox-dark-soft))
 ;(load-theme 'ample-flat t t)
 ;(load-theme 'ample-light t t)
 
