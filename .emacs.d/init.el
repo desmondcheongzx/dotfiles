@@ -39,6 +39,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(gdb-many-windows t)
  '(git-commit-style-convention-checks (quote (non-empty-second-line overlong-summary-line)))
  '(git-commit-summary-max-length 50)
  '(package-selected-packages
