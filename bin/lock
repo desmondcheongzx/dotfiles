@@ -61,7 +61,7 @@ while true ; do
             printf "Usage: $(basename $0) [options]\n\n$OPTIONS\n\n" ; exit 1 ;;
         -d|--desktop) DESKTOP=$(which wmctrl) ; shift ;;
         -g|--greyscale) HUE=(-level 0%,100%,0.6 -set colorspace Gray -separate -average) ; shift ;;
-        -p|--pixelate) EFFECT=(-scale 25% -scale 400%) ; shift ;;
+        -p|--pixelate) EFFECT=(-scale 20% -scale 500%) ; shift ;;
         -f|--font)
             case "$2" in
                 "") shift 2 ;;
@@ -118,9 +118,9 @@ convert "$IMAGE" "${HUE[@]}" "${EFFECT[@]}" -pointsize 26 -fill "$BW" -gravity c
 ${DESKTOP} ${DESKTOP:+-k on}
 
 # try to use a forked version of i3lock with prepared parameters
-if ! i3lock -n "${PARAM[@]}" -i "$IMAGE" > /dev/null 2>&1; then
+if ! i3lock --remove-text-indicator -p "${PARAM[@]}" -i "$IMAGE" > /dev/null 2>&1; then
     # We have failed, lets get back to stock one
-    i3lock -n -i "$IMAGE"
+    i3lock -n --remove-text-indicator -i "$IMAGE"
 fi
 
 # As above, if we were passed -d/--desktop, we'll attempt to restore all windows
