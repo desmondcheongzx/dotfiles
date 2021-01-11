@@ -387,9 +387,9 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
-(global-set-key (kbd "C-c C-k") 'kill-region)
-(global-set-key (kbd "C-.") 'other-window)
-;(global-set-key (kbd "C-i") 'back-to-indentation)
+;;(global-set-key (kbd "C-c C-k") 'kill-region)
+(global-set-key (kbd "C-.") 'ace-window)
+;;(global-set-key (kbd "C-i") 'back-to-indentation)
 
 ;;start flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -455,12 +455,12 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (push (cons "\\*Shell Command\\*" display-buffer--same-window-action) display-buffer-alist)
 ;(when-gui
 ; (shell))
-(custom-set-faces)
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- 
+ '(aw-leading-char-face ((t (:background "gray" :foreground "#fb4933" :box (:line-width 2 :color "grey75" :style released-button) :height 1.0)))))
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
