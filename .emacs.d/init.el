@@ -394,6 +394,50 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
+
+;; org-mode
+;; -*- mode: elisp -*-
+
+;; Enable transient mark mode
+(transient-mark-mode 1)
+
+;;;;Org mode configuration
+;; Enable Org mode
+(require 'org)
+;; Make Org mode work with files ending in .org
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; The above is the default in recent emacsen
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+;; set up org-capture
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(global-set-key (kbd "C-c c") 'org-capture)
+
+;; default org file
+(global-set-key (kbd "C-c o")
+                (lambda () (interactive) (find-file
+                                          (concat org-directory "/main.org"))))
+(setq org-return-follows-link 1)
+(setq org-startup-folded nil)
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/tasks.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("i" "Idea" entry (file+headline "~/org/ideas.org" "Ideas")
+         "* TODO %?\n  %i\n  %a")
+        ("n" "Note" entry
+         (file+headline "~/org/notes.org" "Notes")
+         "* %?\n  %i\n %a")
+        ("r" "Random thoughts" entry
+         (file+headline "~/org/random.org" "Random Thoughts")
+         "* TODO %?\n  %i\n")
+        ("k" "Kill-ring long-term storage" plain (file+datetree "~/org/clipboard.org")
+         "%c" :immediate-finish t :empty-lines 1)
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i")))
+
+
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
