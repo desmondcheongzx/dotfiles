@@ -256,6 +256,18 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
   (local-set-key (kbd "C-c C-c") 'execute-cpp-program))
 (add-hook 'c++-mode-hook 'my-cpp-initialization-hook)
 
+;; function decides whether .h file is C or C++ header, sets C++ by
+;; default because there's more chance of there being a .h without a
+;; .cc than a .h without a .c (ie. for C++ template files)
+(defun c-c++-header ()
+  "Set either 'c-mode' or 'c++-mode', whichever is appropriate for header."
+  (interactive)
+  (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
+    (if (file-exists-p c-file)
+        (c-mode)
+      (c++-mode))))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
+
 ; j2s-mode for javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;(add-hook 'web-mode-hook 'js2-minor-mode)
