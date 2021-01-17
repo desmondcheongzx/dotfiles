@@ -237,7 +237,7 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
   (save-buffer)
   (delete-other-windows)
   (split-window-right)
-  (other-window 1)
+  (other-window 2)
   (let* ((sans-extension (file-name-sans-extension buffer-file-name))
          (compiler (if cpp "g++" "gcc -std=c11"))
          (foo (concat compiler " -Wall -o " sans-extension " " buffer-file-name " && " sans-extension)))
