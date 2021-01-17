@@ -240,7 +240,11 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
   (other-window 2)
   (let* ((sans-extension (file-name-sans-extension buffer-file-name))
          (compiler (if cpp "g++" "gcc -std=c11"))
-         (foo (concat compiler " -Wall -o " sans-extension " " buffer-file-name " && " sans-extension)))
+         (foo (if (file-exists-p "Makefile")
+                  (concat "make && " sans-extension)
+                (concat compiler " -g -Wall -o "
+                        sans-extension " " buffer-file-name
+                        " && " sans-extension))))
     (async-shell-command foo)))
 
 (defun my-c-initialization-hook ()
