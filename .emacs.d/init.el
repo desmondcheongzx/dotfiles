@@ -529,6 +529,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 
+;; Ctags
+(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
