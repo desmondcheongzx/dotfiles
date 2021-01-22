@@ -225,6 +225,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (setq-default c-basic-offset 4)
 ;; Run C programs directly from within emacs
 
+(setq async-shell-command-display-buffer nil)
+
 (defun execute-c-program ()
   (interactive)
   (gcc-program :cpp nil))
@@ -233,7 +235,7 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
   (interactive)
   (gcc-program :cpp t))
 
-(defun gcc-program (&key cpp)
+(defun compile-and-run-gcc (&key cpp)
   (save-buffer)
   (delete-other-windows)
   (split-window-right)
@@ -246,6 +248,23 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
                         sans-extension " " buffer-file-name
                         " && " sans-extension))))
     (async-shell-command foo)))
+
+(defun compile-gcc (&key cpp)
+  (save-buffer)
+  (let* ((sans-extension (file-name-sans-extension buffer-file-name))
+         (compiler (if cpp "g++" "gcc -std=c11"))
+         (foo (if (file-exists-p "Makefile")
+                  "make"
+                (concat compiler " -g -Wall -o "
+                        sans-extension " " buffer-file-name))))
+    (async-shell-command foo)))
+
+ 
+(defun gcc-program (&key cpp)
+  "Dispatch compiler for 'C' or 'C++'."
+  (if (one-window-p)
+      (compile-and-run-gcc :cpp cpp)
+    (compile-gcc :cpp cpp)))
 
 (defun my-c-initialization-hook ()
   (local-set-key (kbd "C-c C-c") 'execute-c-program))
