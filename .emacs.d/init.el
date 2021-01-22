@@ -256,8 +256,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
          (foo (if (file-exists-p "Makefile")
                   "make"
                 (concat compiler " -g -Wall -o "
-                        sans-extension " " buffer-file-name))))
-    (async-shell-command foo)))
+                        sans-extension " " buffer-file-name " &"))))
+    (call-process-shell-command foo nil 0)))
 
  
 (defun gcc-program (&key cpp)
