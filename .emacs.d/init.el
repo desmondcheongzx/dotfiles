@@ -531,6 +531,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 
 ;; Ctags
 (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
+(setq tags-revert-without-query 1)
+
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
