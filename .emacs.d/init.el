@@ -537,6 +537,24 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 (setq tags-revert-without-query 1)
 
+;;; Rustlang
+(setq rust-format-on-save t)
+(setq exec-path (append '("/home/desmond/.cargo/bin") exec-path))
+(setenv "PATH" (concat "/home/desmond/.cargo/bin:" (getenv "PATH")))
+(setq racer-rust-src-path
+      (concat (string-trim
+               (shell-command-to-string "rustc --print sysroot"))
+              "/lib/rustlib/src/rust/library"))
+(with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+
+(add-hook 'racer-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
                                         ;set the default dictionary
 ;;(setq ispell-dictionary "british")
 
