@@ -217,6 +217,10 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (define-key python-mode-map (kbd "<f5>") 'elpy-shell-send-statement-and-step)
 
 
+;; Ctags
+(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
+(setq tags-revert-without-query 1)
+
 ;;;C settings;;;
 ;;set default indentation to 4 spaces
 (setq c-default-style '((java-mode . "java")
