@@ -54,6 +54,12 @@
 (setq frame-title-format "emacs ~ %b")
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-linum-mode 1)
+;; Highlight current line
+(global-hl-line-mode 1)
+;; Global wrap at word boundaries
+(global-visual-line-mode 1)
+;; Show matching parentheses
+(show-paren-mode 1)
 ;give spacing between line number and text in terminal
 (when-term
  (setq linum-format "%d "))
@@ -64,6 +70,19 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (setq next-line-add-newlines t)
 (setq-default indent-tabs-mode nil)
+;; Avoid performance issues in files with very long lines.
+(global-so-long-mode 1)
+
+;; swiper
+(require 'swiper-helm)
+(global-set-key "\C-s" 'swiper-helm)
+(global-set-key "\C-r" 'swiper-helm)
+;;
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*swiper*" eos)
+               (display-buffer-in-side-window)
+               (inhibit-same-window . t)
+               (window-height . 0.1)))
 
 (dolist (command '(yank yank-pop))
    (eval `(defadvice ,command (after indent-region activate)
@@ -423,6 +442,10 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (ac-config-default)
 (global-auto-complete-mode t)
 
+(require 'go-autocomplete)
+;; Enable auto-complete
+(auto-complete-mode 1)
+
 ;;web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -588,6 +611,11 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
     (define-key map (kbd "C-c .") 'go-test-current-test)
     (define-key map (kbd "C-c C-c") 'go-run)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(setq lsp-gopls-staticcheck t)
+
+(require 'yasnippet)
+(yas-global-mode 1)
 
                                         ; Use projectile-test-project in place of 'compile'; assign whatever key you want.
 (global-set-key [f9] 'projectile-test-project)
