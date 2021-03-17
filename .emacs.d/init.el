@@ -237,6 +237,20 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 
 
 ;; Ctags
+(defun split-and-call (f)
+  "Split windows then call function F."
+  (interactive)
+  (delete-other-windows)
+  (split-window-right)
+  (other-window 1)
+  (setq this-command 'xref-find-definitions)
+  (call-interactively f))
+
+(defun ctags-split-find ()
+  (interactive)
+  (split-and-call #'xref-find-definitions))
+
+(global-set-key (kbd "M-i") 'ctags-split-find)
 (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 (setq tags-revert-without-query 1)
 
@@ -597,11 +611,16 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
+(defun go-split-jump ()
+  (interactive)
+  (split-and-call #'godef-jump))
+
 (defun my-go-mode-hook ()
   (setq tab-width 2 indent-tabs-mode 1)
                                         ; eldoc shows the signature of the function at point in the status bar.
   (go-eldoc-setup)
   (local-set-key (kbd "M-.") #'godef-jump)
+  (local-set-key (kbd "M-i") 'go-split-jump)
   (add-hook 'before-save-hook 'gofmt-before-save)
 
                                         ; extra keybindings from https://github.com/bbatsov/prelude/blob/master/modules/prelude-go.el
