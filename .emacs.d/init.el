@@ -303,10 +303,9 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
                         sans-extension " " buffer-file-name " &"))))
     (call-process-shell-command foo nil 0)))
 
- 
 (defun gcc-program (&key cpp)
   "Dispatch compiler for 'C' or 'C++'."
-  (if (one-window-p)
+  (if (<= (length (window-list)) 2)
       (compile-and-run-gcc :cpp cpp)
     (compile-gcc :cpp cpp)))
 
