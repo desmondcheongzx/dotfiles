@@ -46,7 +46,7 @@
  '(git-commit-summary-max-length 50)
  '(package-selected-packages
    (quote
-    (ace-window magit helm minimap docker-compose-mode docker clojure-mode-extra-font-locking gruvbox-theme zenburn-theme blacken py-autopep8 flymake-python-pyflakes flycheck-pyflakes elpy rainbow-delimiters cider flycheck-clojure clojure-mode boogie-friends iy-go-to-char fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode w3m slime flycheck ample-theme))))
+    (multiple-cursors so-long swiper-helm swiper company cargo racer flycheck-rust rust-mode xcscope exec-path-from-shell flymake-go helm-gtags company-go go-mode ace-window magit helm minimap docker-compose-mode docker clojure-mode-extra-font-locking gruvbox-theme zenburn-theme blacken py-autopep8 flymake-python-pyflakes flycheck-pyflakes elpy rainbow-delimiters cider flycheck-clojure clojure-mode boogie-friends iy-go-to-char fill-column-indicator auto-complete web-mode jinja2-mode geiser racket-mode smart-tab paredit parinfer ace-jump-mode w3m slime flycheck ample-theme))))
 
 ;if necessary, create the directory for autosaving
 (make-directory "~/.emacs.d/autosaves/" t)
