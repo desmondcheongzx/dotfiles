@@ -456,15 +456,12 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 
 
 ;;auto-complete
+;(require 'go-autocomplete)
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
 (ac-config-default)
 (global-auto-complete-mode t)
-
-(require 'go-autocomplete)
-;; Enable auto-complete
-(auto-complete-mode 1)
 
 ;;web-mode
 (require 'web-mode)
@@ -624,7 +621,7 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
 (defun my-go-mode-hook ()
   (setq tab-width 2 indent-tabs-mode 1)
                                         ; eldoc shows the signature of the function at point in the status bar.
-  (go-eldoc-setup)
+;  (go-eldoc-setup)
   (local-set-key (kbd "M-.") #'godef-jump)
   (local-set-key (kbd "M-i") 'go-split-jump)
   (add-hook 'before-save-hook 'gofmt-before-save)
@@ -635,6 +632,8 @@ invoked from a Python process, it will switch back to the `python-mode' buffer."
     (define-key map (kbd "C-c m") 'go-test-current-file)
     (define-key map (kbd "C-c .") 'go-test-current-test)
     (define-key map (kbd "C-c C-c") 'go-run)))
+(require 'lsp-mode)
+(add-hook 'go-mode-hook #'lsp)
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (setq lsp-gopls-staticcheck t)
