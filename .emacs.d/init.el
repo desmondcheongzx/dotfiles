@@ -73,6 +73,13 @@
 ;; Avoid performance issues in files with very long lines.
 (global-so-long-mode 1)
 
+;; multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; swiper
 (require 'swiper-helm)
 (global-set-key "\C-s" 'swiper-helm)
